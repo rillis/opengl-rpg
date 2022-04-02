@@ -16,7 +16,7 @@ public class GameObject {
     public float height = 1;
 
     //rotation ºDEG
-    public float rotation = 0;
+    public float rotation = 180;
 
     //Animations
     public Animation[] animations;
@@ -38,7 +38,7 @@ public class GameObject {
     }
 
     public boolean isClicked(float mouse_x, float mouse_y){
-        System.out.println(x + "|" + y + "|"+width+"|"+height+ "   "+mouse_x+"|"+mouse_y);
+        //System.out.println(x + "|" + y + "|"+width+"|"+height+ "   "+mouse_x+"|"+mouse_y);
         return new Rectangle2D.Float(x-width/2, y-height/2, width, height).contains(new Rectangle2D.Float(mouse_x, mouse_y, 1f, 1f));
     }
 }

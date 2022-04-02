@@ -1,6 +1,7 @@
 import engine.GameLoop;
 import graphics.Renderer;
 import resources.Sprite;
+import test.TestBackground;
 import test.TestPlayer;
 import world.World;
 
@@ -12,10 +13,14 @@ public class GameRunnable {
 
         Sprite.init();
         Renderer.init();
+
+        World.addObject(new TestBackground());
+        World.addObject(new TestPlayer());
+
         GameLoop.start();
 
         //TESTS
-        World.addObject(new TestPlayer());
+
 
     }
 }

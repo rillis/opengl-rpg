@@ -28,6 +28,6 @@ public class TestPlayer extends GameObject {
 
     @Override
     public void click() {
-        System.out.println("clicked");
+        //System.out.println("clicked");
     }
 }
