@@ -2,6 +2,7 @@ package engine;
 
 import events.EventListener;
 import graphics.Renderer;
+import utils.Utils;
 import world.World;
 
 public class GameLoop {
@@ -12,7 +13,7 @@ public class GameLoop {
     private static final int maxUpdates = 5;
     private static long lastUpdateTime = 0;
     private static final int targetFPS = 60;
-    private static final int targetTime = 1000000000 / targetFPS;
+    private static final int targetTime = Utils.NANO / targetFPS;
 
 
     public static void start(){
@@ -41,7 +42,7 @@ public class GameLoop {
                 Renderer.render();
 
                 fps++;
-                if(System.nanoTime() >= lastFPSCheck + 1000000000){
+                if(System.nanoTime() >= lastFPSCheck + Utils.NANO){
                     System.out.println(fps);
                     fps = 0;
                     lastFPSCheck = System.nanoTime();
@@ -50,7 +51,7 @@ public class GameLoop {
                 long timeTaken = System.nanoTime() - currentTime;
                 if(timeTaken < targetTime){
                     try {
-                        Thread.sleep((targetTime-timeTaken)/1000000);
+                        Thread.sleep((targetTime-timeTaken) / Utils.MICRO);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -59,5 +60,9 @@ public class GameLoop {
         });
         thread.setName("gameloop");
         thread.start();
+    }
+
+    public static float updateDelta(){
+        return 1.0f / Utils.NANO * targetTime;
     }
 }

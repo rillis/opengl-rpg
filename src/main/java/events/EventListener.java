@@ -10,6 +10,10 @@ import java.awt.*;
 public class EventListener implements GLEventListener {
     public static GL2 gl = null;
 
+    private static float windowWidth = 0;
+    private static float windowHeight = 0;
+    private static float unitsTall_f = 0;
+
     @Override
     public void init(GLAutoDrawable drawable) {
         gl = drawable.getGL().getGL2();
@@ -29,7 +33,9 @@ public class EventListener implements GLEventListener {
         //cleaning display
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);
 
+        gl.glTranslatef(-Renderer.cameraX, -Renderer.cameraY, 0);
         World.render();
+        gl.glTranslatef(Renderer.cameraX, Renderer.cameraY, 0);
     }
 
     @Override
@@ -50,6 +56,22 @@ public class EventListener implements GLEventListener {
         gl.glMatrixMode(GL2.GL_MODELVIEW);
         gl.glLoadIdentity();
 
+        windowWidth = width;
+        windowHeight = height;
+        unitsTall_f = unitsTall;
+
         System.out.println("UnitsWide:" + Renderer.unitsWide + ", UnitsTall:" + unitsTall);
+    }
+
+    public static float getWindowWidth() {
+        return windowWidth;
+    }
+
+    public static float getWindowHeight() {
+        return windowHeight;
+    }
+
+    public static float getUnitsTall() {
+        return unitsTall_f;
     }
 }

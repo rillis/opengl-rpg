@@ -17,6 +17,9 @@ public class Renderer {
 
     public static float unitsWide = 200;
 
+    public static float cameraX = 0;
+    public static float cameraY = 0;
+
     private static GLProfile profile = null;
 
     public static void init(){

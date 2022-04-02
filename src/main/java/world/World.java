@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class World {
 
-    private static ArrayList<GameObject> gameObjects = new ArrayList<>();
+    public static ArrayList<GameObject> gameObjects = new ArrayList<>();
 
     public static void update(){
         for(GameObject gameObject : gameObjects){

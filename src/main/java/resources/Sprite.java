@@ -36,8 +36,8 @@ public class Sprite {
             e.printStackTrace();
         }
 
-        for (int x = 0; x < 4; x++){
-            for (int y = 0; y < 3; y++){
+        for (int y = 0; y < 3; y++){
+            for (int x = 0; x < 4; x++){
                 int xi = (x*16);
                 int yi = (y*17+1);
 
@@ -49,4 +49,6 @@ public class Sprite {
     public BufferedImage getImage(int i){
         return bufferedImages[i];
     }
+
+    public ImageResource getImageResource(int i){ return new ImageResource(bufferedImages[i]); }
 }
